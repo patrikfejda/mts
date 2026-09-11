@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MTS – Manažment softvérových projektov · Cvičenia</title>
+<meta name="description" content="Informácie pre študentov predmetu Manažment softvérových projektov (MTS) – prednášky, cvičenia, hodnotenie, termíny a rozpis tímov.">
+<style>
+  :root{
+    --bg:#f7f8fa; --surface:#ffffff; --text:#1a1d21; --muted:#5b6470;
+    --border:#e3e6ea; --accent:#2f5bd7; --accent-soft:#eaf0ff;
+    --ok:#1f9d63; --warn:#c9451c; --warn-soft:#fdeeea;
+    --shadow:0 1px 2px rgba(20,25,35,.05),0 4px 16px rgba(20,25,35,.05);
+    --radius:14px;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#0f1216; --surface:#171b21; --text:#e8ebef; --muted:#9aa4b1;
+      --border:#262c34; --accent:#7aa0ff; --accent-soft:#1a2340;
+      --ok:#4cc98b; --warn:#ff8a63; --warn-soft:#3a221a;
+      --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.35);
+    }
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;background:var(--bg);color:var(--text);
+    font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--accent);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .wrap{max-width:960px;margin:0 auto;padding:0 20px}
+
+  header.hero{
+    background:linear-gradient(135deg,var(--accent) 0%,#5b7cf0 100%);
+    color:#fff;padding:56px 0 44px;
+  }
+  header.hero .wrap{max-width:960px}
+  .eyebrow{font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;opacity:.85;font-weight:600;margin:0 0 10px}
+  header.hero h1{margin:0;font-size:clamp(1.9rem,5vw,2.9rem);line-height:1.1;font-weight:800}
+  header.hero p.lead{margin:14px 0 0;font-size:1.1rem;max-width:640px;opacity:.94}
+
+  nav.toc{
+    position:sticky;top:0;z-index:10;background:var(--surface);
+    border-bottom:1px solid var(--border);backdrop-filter:saturate(1.2) blur(6px);
+  }
+  nav.toc .wrap{display:flex;gap:6px;flex-wrap:wrap;padding-top:10px;padding-bottom:10px;overflow-x:auto}
+  nav.toc a{
+    color:var(--muted);font-size:.86rem;font-weight:600;padding:6px 12px;
+    border-radius:999px;white-space:nowrap;
+  }
+  nav.toc a:hover{background:var(--accent-soft);color:var(--accent);text-decoration:none}
+
+  main{padding:36px 0 60px}
+  section{margin:0 0 40px;scroll-margin-top:64px}
+  h2{font-size:1.5rem;font-weight:800;margin:0 0 6px;display:flex;align-items:center;gap:10px}
+  h2 .num{color:var(--accent);font-size:1rem;font-weight:700;background:var(--accent-soft);
+    padding:2px 10px;border-radius:8px;line-height:1.6}
+  h3{font-size:1.08rem;font-weight:700;margin:22px 0 8px}
+  .sub{color:var(--muted);margin:2px 0 18px}
+
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
+    box-shadow:var(--shadow);padding:22px 24px;margin:0 0 16px}
+
+  /* Key dates */
+  .dates{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+  .datebox{background:var(--surface);border:1px solid var(--border);border-left:4px solid var(--accent);
+    border-radius:12px;padding:16px 18px;box-shadow:var(--shadow)}
+  .datebox.warn{border-left-color:var(--warn)}
+  .datebox .d{font-size:1.35rem;font-weight:800}
+  .datebox .l{color:var(--muted);font-size:.92rem;margin-top:2px}
+
+  ul{margin:8px 0;padding-left:20px}
+  li{margin:5px 0}
+
+  table{width:100%;border-collapse:collapse;font-size:.95rem}
+  .tablewrap{overflow-x:auto;border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow)}
+  th,td{padding:11px 14px;text-align:left;border-bottom:1px solid var(--border);vertical-align:top}
+  thead th{background:var(--accent-soft);color:var(--text);font-weight:700;font-size:.82rem;
+    text-transform:uppercase;letter-spacing:.04em;border-bottom:2px solid var(--border)}
+  tbody tr:last-child td{border-bottom:none}
+  tbody tr:hover{background:var(--accent-soft)}
+  td.c{white-space:nowrap;font-variant-numeric:tabular-nums}
+  .pill{display:inline-block;background:var(--accent-soft);color:var(--accent);
+    font-weight:700;font-size:.82rem;padding:2px 9px;border-radius:7px;margin:1px 2px}
+
+  .note{background:var(--warn-soft);border:1px solid var(--border);border-left:4px solid var(--warn);
+    border-radius:12px;padding:14px 18px;margin:14px 0;color:var(--text)}
+  .note strong{color:var(--warn)}
+
+  .grade-total{display:flex;flex-wrap:wrap;gap:12px;margin:0 0 18px}
+  .gt{flex:1;min-width:150px;background:var(--surface);border:1px solid var(--border);
+    border-radius:12px;padding:14px 18px;box-shadow:var(--shadow)}
+  .gt .big{font-size:1.6rem;font-weight:800}
+  .gt.accent{border-top:3px solid var(--accent)}
+  .gt .lbl{color:var(--muted);font-size:.9rem}
+
+  footer{border-top:1px solid var(--border);color:var(--muted);font-size:.9rem;padding:26px 0 40px}
+  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+
+  .anchor-top{margin-left:auto;font-size:.8rem}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Manažment softvérových projektov</p>
+    <h1>MTS – informácie pre študentov</h1>
+    <p class="lead">Cvičenia, prednáškové témy, podmienky absolvovania, hodnotenie a rozpis tímov. Zimný semester 2026/2027.</p>
+  </div>
+</header>
+
+<nav class="toc">
+  <div class="wrap">
+    <a href="#terminy">Kľúčové termíny</a>
+    <a href="#prednasky">Prednášky</a>
+    <a href="#organizacia">Organizácia cvičení</a>
+    <a href="#hodnotenie">Hodnotenie</a>
+    <a href="#temy">Priradenie tém</a>
+    <a href="#rozpis">Rozpis prezentácií</a>
+    <a href="#eseje">Ako písať eseje</a>
+  </div>
+</nav>
+
+<main class="wrap">
+
+  <!-- KĽÚČOVÉ TERMÍNY -->
+  <section id="terminy">
+    <h2>Kľúčové termíny</h2>
+    <p class="sub">Termíny odovzdania sa počítajú do bodového hodnotenia – nezmeškaj ich.</p>
+    <div class="dates">
+      <div class="datebox">
+        <div class="d">20. 9. 2026</div>
+        <div class="l">Odovzdanie zámerov esejí (2× PDF do AISu). Odovzdáva jeden člen tímu.</div>
+      </div>
+      <div class="datebox">
+        <div class="d">16. 9. – 2. 12. 2026</div>
+        <div class="l">Prednášky (12 týždňov, každú stredu).</div>
+      </div>
+      <div class="datebox warn">
+        <div class="d">12. 12. 2026, 23:59</div>
+        <div class="l">Odovzdanie oboch esejí do AISu.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PREDNÁŠKY -->
+  <section id="prednasky">
+    <h2><span class="num">12</span> Zoznam prednášok</h2>
+    <p class="sub">Témy prednášok sú zároveň témami esejí a prezentácií pridelených tímom.</p>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th style="width:52px">#</th><th>Téma prednášky</th><th style="width:120px">Dátum</th></tr></thead>
+        <tbody>
+          <tr><td class="c">1</td><td>Úvod do manažmentu softvérových projektov: životný cyklus tvorby softvéru. Oblasti manažmentu, procesy, typy.</td><td class="c">16. 9. 2026</td></tr>
+          <tr><td class="c">2</td><td>Inicializácia a ukončenie softvérového projektu.</td><td class="c">23. 9. 2026</td></tr>
+          <tr><td class="c">3</td><td>Plánovanie softvérového projektu.</td><td class="c">30. 9. 2026</td></tr>
+          <tr><td class="c">4</td><td>Odhad zdrojov pri vývoji softvérového a informačného systému. Meranie a hodnotenie softvéru: problémy, metódy, metriky.</td><td class="c">7. 10. 2026</td></tr>
+          <tr><td class="c">5</td><td>Manažment rizík v softvérovom projekte.</td><td class="c">14. 10. 2026</td></tr>
+          <tr><td class="c">6</td><td>Riadenie a vykonávanie projektu. Manažment zmien.</td><td class="c">21. 10. 2026</td></tr>
+          <tr><td class="c">7</td><td>Manažment kvality: štandardy, plány, metriky.</td><td class="c">28. 10. 2026</td></tr>
+          <tr><td class="c">8</td><td>Manažment ľudských zdrojov v softvérovom projekte.</td><td class="c">4. 11. 2026</td></tr>
+          <tr><td class="c">9</td><td>Zlepšovanie softvérového procesu: modely zlepšovania procesov (CMMI, ISO 9001:2000, ISO/IEC 90003).</td><td class="c">11. 11. 2026</td></tr>
+          <tr><td class="c">10</td><td>Manažment komunikácie v softvérovom projekte. Kancelária projektového manažmentu.</td><td class="c">18. 11. 2026</td></tr>
+          <tr><td class="c">11</td><td>Manažment cieľov v softvérovom projekte.</td><td class="c">25. 11. 2026</td></tr>
+          <tr><td class="c">12</td><td>Špecifiká manažmentu rôznych typov softvérového projektu.</td><td class="c">2. 12. 2026</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ORGANIZÁCIA CVIČENÍ -->
+  <section id="organizacia">
+    <h2>Organizácia cvičení</h2>
+    <p class="sub">Ako prebiehajú cvičenia počas semestra.</p>
+
+    <div class="card">
+      <h3>Tímy</h3>
+      <ul>
+        <li>V rámci krúžku si študenti vytvoria <strong>dvojčlenné tímy</strong>.</li>
+        <li>Pri nepárnom počte študentov môže byť <strong>jeden tím trojčlenný</strong> – ten však vypracuje rozsiahlejšie eseje (5 – 6 normostrán namiesto 3 – 4).</li>
+        <li>V tíme môžu byť len študenti z toho istého krúžku. Prehadzovať sa medzi krúžkami nie je možné.</li>
+        <li>Každý tím dostane pridelené <strong>dve témy</strong> z prednášok (viď <a href="#temy">Priradenie tém</a>).</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>Priebeh cvičení</h3>
+      <ul>
+        <li><strong>Cvičenie 1:</strong> úvod, podmienky absolvovania, rozdelenie do tímov, úvod k písaniu abstraktov a štúdiu tém.</li>
+        <li><strong>Do 20. 9. 2026</strong> odovzdá každý tím <strong>dva zámery esejí</strong> ako PDF do AISu (odovzdáva jeden člen tímu).</li>
+        <li><strong>Cvičenie 2:</strong> všetky tímy odprezentujú svoje zámery a konzultujú ich s cvičiacim. Cieľom je odhaliť duplicitné témy v rámci krúžku – dotknuté tímy si zámery vzájomne upravia.</li>
+        <li><strong>Cvičenia 3 – 12:</strong> prezentácie projektov (esejí) a diskusia s oponentským tímom.</li>
+      </ul>
+      <h3>Čo obsahuje zámer eseje</h3>
+      <ul>
+        <li>Názov eseje (súvisiaci s pridelenou témou z prednášky)</li>
+        <li>Mená členov tímu a krúžok</li>
+        <li>Termín cvičenia</li>
+        <li>Abstrakt – krátky popis, čomu sa budete venovať (max. 250 slov)</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>Prezentácia projektu</h3>
+      <ul>
+        <li>Prezentuje sa <strong>aktuálny stav projektu</strong> – tímy prezentujúce skôr v semestri budú mať prirodzene menej detailné informácie ako tímy ku koncu.</li>
+        <li>Max. dĺžka prezentácie: <strong>7 minút</strong>. Max. dĺžka diskusie prezentujúceho a oponentského tímu: <strong>7 minút</strong>. Zvyšok času je na diskusiu s cvičiacim.</li>
+        <li>Prezentácia musí byť nahraná na určené miesto v AISe <strong>najneskôr do 23:59 h v deň pred prezentáciou</strong>.</li>
+        <li>Prezentujúci tím poskytne oponentskému tímu podklady v dostatočnom predstihu (termín si dohodnú vzájomne).</li>
+      </ul>
+      <div class="note"><strong>Pozor:</strong> za nenahranie prezentácie včas do AISu je strhnutie <strong>5 bodov</strong>.</div>
+    </div>
+  </section>
+
+  <!-- HODNOTENIE -->
+  <section id="hodnotenie">
+    <h2>Hodnotenie</h2>
+    <p class="sub">Spolu 100 bodov: 60 b za cvičenia + 40 b za skúšku.</p>
+
+    <div class="grade-total">
+      <div class="gt accent"><div class="big">60 b</div><div class="lbl">Cvičenia (priebežné)</div></div>
+      <div class="gt accent"><div class="big">40 b</div><div class="lbl">Skúška</div></div>
+      <div class="gt"><div class="big">100 b</div><div class="lbl">Spolu</div></div>
+    </div>
+
+    <h3>Rozpis bodov za cvičenia (60 b)</h3>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Povinnosť</th><th style="width:120px">Body</th><th style="width:130px">Dĺžka</th></tr></thead>
+        <tbody>
+          <tr><td>Prezentácia 1</td><td><span class="pill">8 b</span></td><td class="c">7 min.</td></tr>
+          <tr><td>Prezentácia 2</td><td><span class="pill">7 b</span></td><td class="c">7 min.</td></tr>
+          <tr><td>Diskusia oponentského tímu 1</td><td><span class="pill">3 b</span></td><td class="c">7 min.</td></tr>
+          <tr><td>Diskusia oponentského tímu 2</td><td><span class="pill">2 b</span></td><td class="c">7 min.</td></tr>
+          <tr><td>Esej 1 (3 – 4 normostrany)</td><td><span class="pill">20 b</span></td><td class="c">–</td></tr>
+          <tr><td>Esej 2 (3 – 4 normostrany)</td><td><span class="pill">20 b</span></td><td class="c">–</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Podmienky absolvovania</h3>
+    <div class="card">
+      <ul>
+        <li><strong>Zápočet:</strong> získať aspoň 50 % z cvičení, t. j. <strong>min. 30 b zo 60 b</strong> – z toho <strong>min. 10 b</strong> z prezentácií a diskusií a <strong>min. 20 b</strong> spolu z esejí.</li>
+        <li><strong>Skúška:</strong> získať <strong>min. 15 b</strong> zo 40 b.</li>
+        <li><strong>Celkovo:</strong> získať aspoň 56 % celkového hodnotenia, t. j. <strong>min. 56 b zo 100 b</strong>.</li>
+      </ul>
+    </div>
+
+    <h3>Kritériá hodnotenia prezentácie <span class="pill">8 + 7 b</span></h3>
+    <ul>
+      <li>Obsah a vizuál 1. prezentácie: <strong>6 b</strong>; obsah 2. prezentácie: <strong>5 b</strong></li>
+      <li>Reakcia na otázky a poznámky oponentského tímu pri oboch prezentáciách: <strong>2 b</strong></li>
+      <li>Hodnotenie oponentského tímu podľa odbornej úrovne diskusie: <strong>3 b</strong> k 1. prezentácii, <strong>2 b</strong> k 2. prezentácii</li>
+    </ul>
+
+    <h3>Kritériá hodnotenia každej eseje <span class="pill">20 b</span></h3>
+    <ul>
+      <li>Jasne formulovaný zámer (aj v názve projektu): <strong>3 b</strong></li>
+      <li>Náročnosť témy: <strong>3 b</strong></li>
+      <li>Komplexnosť a originalita spracovania: <strong>6 b</strong></li>
+      <li>Schopnosť pretransformovať vedomosti k téme do vlastných myšlienok: <strong>4 b</strong></li>
+      <li>Použitie relevantných argumentov a hodnotenia: <strong>4 b</strong></li>
+    </ul>
+
+    <div class="card">
+      <h3>Odovzdanie esejí</h3>
+      <ul>
+        <li>Rozsah: <strong>3 – 4 normostrany</strong> na esej (bez literatúry). Trojčlenné tímy: 5 – 6 normostrán.</li>
+        <li>Termín: <strong>12. 12. 2026 do 23:59 h</strong> do AISu.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- PRIRADENIE TÉM -->
+  <section id="temy">
+    <h2>Priradenie tém esejí</h2>
+    <p class="sub">Každý tím má dve témy podľa svojho <strong>poradia v krúžku (1 – 10)</strong>. Vzor je rovnaký vo všetkých krúžkoch (krúžok 1 = tímy 1–10, krúžok 2 = tímy 11–20, … krúžok 8 = tímy 71–80).</p>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th style="width:150px">Tím (poradie v krúžku)</th><th>Téma A</th><th>Téma B</th></tr></thead>
+        <tbody>
+          <tr><td class="c">Tím 1</td><td>Prednáška 2</td><td>Prednáška 3</td></tr>
+          <tr><td class="c">Tím 2</td><td>Prednáška 4</td><td>Prednáška 5</td></tr>
+          <tr><td class="c">Tím 3</td><td>Prednáška 6</td><td>Prednáška 7</td></tr>
+          <tr><td class="c">Tím 4</td><td>Prednáška 8</td><td>Prednáška 9</td></tr>
+          <tr><td class="c">Tím 5</td><td>Prednáška 10</td><td>Prednáška 11</td></tr>
+          <tr><td class="c">Tím 6</td><td>Prednáška 2</td><td>Prednáška 12</td></tr>
+          <tr><td class="c">Tím 7</td><td>Prednáška 3</td><td>Prednáška 11</td></tr>
+          <tr><td class="c">Tím 8</td><td>Prednáška 4</td><td>Prednáška 10</td></tr>
+          <tr><td class="c">Tím 9</td><td>Prednáška 5</td><td>Prednáška 9</td></tr>
+          <tr><td class="c">Tím 10</td><td>Prednáška 6</td><td>Prednáška 8</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ROZPIS PREZENTÁCIÍ -->
+  <section id="rozpis">
+    <h2>Rozpis prezentácií a oponentúr</h2>
+    <p class="sub">Číslo cvičenia, kedy tím prezentuje, a jeho oponentský tím. Rovnaký vzor platí vo všetkých krúžkoch; čísla tímov sú v rámci krúžku (1 – 10).</p>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th style="width:150px">Tím (poradie v krúžku)</th><th>Prezentácia 1</th><th>Prezentácia 2</th><th>Oponuje mu tím</th></tr></thead>
+        <tbody>
+          <tr><td class="c">Tím 1</td><td class="c">Cvičenie 3</td><td class="c">Cvičenie 4</td><td class="c">10</td></tr>
+          <tr><td class="c">Tím 2</td><td class="c">Cvičenie 3</td><td class="c">Cvičenie 4</td><td class="c">9</td></tr>
+          <tr><td class="c">Tím 3</td><td class="c">Cvičenie 5</td><td class="c">Cvičenie 6</td><td class="c">1</td></tr>
+          <tr><td class="c">Tím 4</td><td class="c">Cvičenie 5</td><td class="c">Cvičenie 6</td><td class="c">2</td></tr>
+          <tr><td class="c">Tím 5</td><td class="c">Cvičenie 7</td><td class="c">Cvičenie 8</td><td class="c">3</td></tr>
+          <tr><td class="c">Tím 6</td><td class="c">Cvičenie 7</td><td class="c">Cvičenie 8</td><td class="c">5</td></tr>
+          <tr><td class="c">Tím 7</td><td class="c">Cvičenie 9</td><td class="c">Cvičenie 10</td><td class="c">4</td></tr>
+          <tr><td class="c">Tím 8</td><td class="c">Cvičenie 9</td><td class="c">Cvičenie 10</td><td class="c">6</td></tr>
+          <tr><td class="c">Tím 9</td><td class="c">Cvičenie 11</td><td class="c">Cvičenie 12</td><td class="c">7</td></tr>
+          <tr><td class="c">Tím 10</td><td class="c">Cvičenie 11</td><td class="c">Cvičenie 12</td><td class="c">8</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="sub" style="margin-top:12px">Príklad čítania: <em>Tím 1 prezentuje na cvičeniach 3 a 4; jeho oponentom je tím 10. Naopak tím 3 oponuje tímu 1.</em></p>
+  </section>
+
+  <!-- AKO PÍSAŤ ESEJE -->
+  <section id="eseje">
+    <h2>Ako písať eseje</h2>
+    <p class="sub">Pomôcky k štruktúre a štýlu esejí.</p>
+    <div class="card">
+      <ul>
+        <li><a href="https://www.zones.sk/studentske-prace/gramatika/21499-esej-vzor-ako-pisat-esej/" target="_blank" rel="noopener">Esej – vzor, ako písať esej (zones.sk)</a></li>
+        <li><a href="https://www.pdf.umb.sk/cms/saveDataFilePublic.php?uid=bbiresova&path=KGQ1CjtMVdjMH33oItAOKuZtklqbFA7JDXtAA6uAcskD9P75iyOlRfjaxkET2cocNVlExPDAIXx-MN2dJaWr8Q" target="_blank" rel="noopener">Metodická pomôcka k písaniu esejí (pdf.umb.sk)</a></li>
+      </ul>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>MTS – Manažment softvérových projektov · Cvičenia · ZS 2026/2027</span>
+    <a class="anchor-top" href="#">↑ Na začiatok</a>
+  </div>
+</footer>
+
+</body>
+</html>
