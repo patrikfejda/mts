@@ -4,7 +4,7 @@ Informačná stránka pre študentov predmetu **Manažment softvérových projek
 
 ## 🌐 Živá stránka
 
-**https://patrikfejda.github.io/MTS/**
+**https://patrikfejda.github.io/mts/**
 
 ## Obsah
 
