@@ -118,8 +118,7 @@
     <a href="#prednasky">Prednášky</a>
     <a href="#organizacia">Organizácia cvičení</a>
     <a href="#hodnotenie">Hodnotenie</a>
-    <a href="#temy">Priradenie tém</a>
-    <a href="#rozpis">Rozpis prezentácií</a>
+    <a href="#temy">Témy a rozpis</a>
     <a href="#eseje">Ako písať eseje</a>
   </div>
 </nav>
@@ -247,7 +246,7 @@
       <p style="margin:0 0 8px">Body za cvičenia získavaš v dvoch rôznych úlohách:</p>
       <ul>
         <li><strong>Ako prezentujúci tím</strong> – prezentuješ svoje dve témy (Prezentácia 1 a 2) a získavaš body za obsah, vizuál a reakciu na otázky.</li>
-        <li><strong>Ako oponentský tím</strong> – k dvom prezentáciám iného, tebe prideleného tímu (viď <a href="#rozpis">Rozpis prezentácií</a>) vedieš odbornú diskusiu. Za ňu získavaš body <em>Diskusia 1 (3 b)</em> a <em>Diskusia 2 (2 b)</em>. Tie teda <strong>nezískavaš počas vlastnej prezentácie</strong>, ale vtedy, keď oponuješ.</li>
+        <li><strong>Ako oponentský tím</strong> – k dvom prezentáciám iného, tebe prideleného tímu (viď <a href="#temy">Témy a rozpis</a>) vedieš odbornú diskusiu. Za ňu získavaš body <em>Diskusia 1 (3 b)</em> a <em>Diskusia 2 (2 b)</em>. Tie teda <strong>nezískavaš počas vlastnej prezentácie</strong>, ale vtedy, keď oponuješ.</li>
       </ul>
     </div>
 
@@ -287,52 +286,39 @@
     </div>
   </section>
 
-  <!-- PRIRADENIE TÉM -->
+  <!-- PRIRADENIE TÉM A ROZPIS -->
   <section id="temy">
-    <h2>Priradenie tém esejí</h2>
+    <h2>Priradenie tém a rozpis prezentácií</h2>
     <p class="sub">Každý tím má dve témy podľa svojho <strong>poradia v krúžku (1 – 10)</strong>. Vzor je rovnaký vo všetkých krúžkoch (krúžok 1 = tímy 1–10, krúžok 2 = tímy 11–20, … krúžok 8 = tímy 71–80). <strong>Poradie (číslo) tímu ti pridelí cvičiaci na 1. cvičení.</strong></p>
     <div class="note"><strong>Poradie sedí dokopy:</strong> <strong>Téma A → 1. esej → 1. prezentácia</strong>, <strong>Téma B → 2. esej → 2. prezentácia</strong>. Prvú esej aj prvú prezentáciu teda robíš k téme A, druhú k téme B.</div>
     <div class="tablewrap">
       <table>
-        <thead><tr><th style="width:150px">Tím (poradie v krúžku)</th><th>Téma A</th><th>Téma B</th></tr></thead>
+        <thead>
+          <tr>
+            <th rowspan="2" style="width:110px">Tím (poradie v krúžku)</th>
+            <th colspan="2">1. prezentácia / esej (Téma A)</th>
+            <th colspan="2">2. prezentácia / esej (Téma B)</th>
+            <th rowspan="2" style="width:90px">Oponuje mu tím</th>
+          </tr>
+          <tr>
+            <th>Téma</th><th>Kedy</th><th>Téma</th><th>Kedy</th>
+          </tr>
+        </thead>
         <tbody>
-          <tr><td class="c">Tím 1</td><td>Prednáška 2</td><td>Prednáška 3</td></tr>
-          <tr><td class="c">Tím 2</td><td>Prednáška 4</td><td>Prednáška 5</td></tr>
-          <tr><td class="c">Tím 3</td><td>Prednáška 6</td><td>Prednáška 7</td></tr>
-          <tr><td class="c">Tím 4</td><td>Prednáška 8</td><td>Prednáška 9</td></tr>
-          <tr><td class="c">Tím 5</td><td>Prednáška 10</td><td>Prednáška 11</td></tr>
-          <tr><td class="c">Tím 6</td><td>Prednáška 2</td><td>Prednáška 12</td></tr>
-          <tr><td class="c">Tím 7</td><td>Prednáška 3</td><td>Prednáška 11</td></tr>
-          <tr><td class="c">Tím 8</td><td>Prednáška 4</td><td>Prednáška 10</td></tr>
-          <tr><td class="c">Tím 9</td><td>Prednáška 5</td><td>Prednáška 9</td></tr>
-          <tr><td class="c">Tím 10</td><td>Prednáška 6</td><td>Prednáška 8</td></tr>
+          <tr><td class="c">Tím 1</td><td>Prednáška 2</td><td class="c">Cvičenie 3</td><td>Prednáška 3</td><td class="c">Cvičenie 4</td><td class="c">10</td></tr>
+          <tr><td class="c">Tím 2</td><td>Prednáška 4</td><td class="c">Cvičenie 3</td><td>Prednáška 5</td><td class="c">Cvičenie 4</td><td class="c">9</td></tr>
+          <tr><td class="c">Tím 3</td><td>Prednáška 6</td><td class="c">Cvičenie 5</td><td>Prednáška 7</td><td class="c">Cvičenie 6</td><td class="c">1</td></tr>
+          <tr><td class="c">Tím 4</td><td>Prednáška 8</td><td class="c">Cvičenie 5</td><td>Prednáška 9</td><td class="c">Cvičenie 6</td><td class="c">2</td></tr>
+          <tr><td class="c">Tím 5</td><td>Prednáška 10</td><td class="c">Cvičenie 7</td><td>Prednáška 11</td><td class="c">Cvičenie 8</td><td class="c">3</td></tr>
+          <tr><td class="c">Tím 6</td><td>Prednáška 2</td><td class="c">Cvičenie 7</td><td>Prednáška 12</td><td class="c">Cvičenie 8</td><td class="c">5</td></tr>
+          <tr><td class="c">Tím 7</td><td>Prednáška 3</td><td class="c">Cvičenie 9</td><td>Prednáška 11</td><td class="c">Cvičenie 10</td><td class="c">4</td></tr>
+          <tr><td class="c">Tím 8</td><td>Prednáška 4</td><td class="c">Cvičenie 9</td><td>Prednáška 10</td><td class="c">Cvičenie 10</td><td class="c">6</td></tr>
+          <tr><td class="c">Tím 9</td><td>Prednáška 5</td><td class="c">Cvičenie 11</td><td>Prednáška 9</td><td class="c">Cvičenie 12</td><td class="c">7</td></tr>
+          <tr><td class="c">Tím 10</td><td>Prednáška 6</td><td class="c">Cvičenie 11</td><td>Prednáška 8</td><td class="c">Cvičenie 12</td><td class="c">8</td></tr>
         </tbody>
       </table>
     </div>
-  </section>
-
-  <!-- ROZPIS PREZENTÁCIÍ -->
-  <section id="rozpis">
-    <h2>Rozpis prezentácií a oponentúr</h2>
-    <p class="sub">Číslo cvičenia, kedy tím prezentuje, a jeho oponentský tím. Rovnaký vzor platí vo všetkých krúžkoch; čísla tímov sú v rámci krúžku (1 – 10).</p>
-    <div class="tablewrap">
-      <table>
-        <thead><tr><th style="width:150px">Tím (poradie v krúžku)</th><th>Prezentácia 1</th><th>Prezentácia 2</th><th>Oponuje mu tím</th></tr></thead>
-        <tbody>
-          <tr><td class="c">Tím 1</td><td class="c">Cvičenie 3</td><td class="c">Cvičenie 4</td><td class="c">10</td></tr>
-          <tr><td class="c">Tím 2</td><td class="c">Cvičenie 3</td><td class="c">Cvičenie 4</td><td class="c">9</td></tr>
-          <tr><td class="c">Tím 3</td><td class="c">Cvičenie 5</td><td class="c">Cvičenie 6</td><td class="c">1</td></tr>
-          <tr><td class="c">Tím 4</td><td class="c">Cvičenie 5</td><td class="c">Cvičenie 6</td><td class="c">2</td></tr>
-          <tr><td class="c">Tím 5</td><td class="c">Cvičenie 7</td><td class="c">Cvičenie 8</td><td class="c">3</td></tr>
-          <tr><td class="c">Tím 6</td><td class="c">Cvičenie 7</td><td class="c">Cvičenie 8</td><td class="c">5</td></tr>
-          <tr><td class="c">Tím 7</td><td class="c">Cvičenie 9</td><td class="c">Cvičenie 10</td><td class="c">4</td></tr>
-          <tr><td class="c">Tím 8</td><td class="c">Cvičenie 9</td><td class="c">Cvičenie 10</td><td class="c">6</td></tr>
-          <tr><td class="c">Tím 9</td><td class="c">Cvičenie 11</td><td class="c">Cvičenie 12</td><td class="c">7</td></tr>
-          <tr><td class="c">Tím 10</td><td class="c">Cvičenie 11</td><td class="c">Cvičenie 12</td><td class="c">8</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <p class="sub" style="margin-top:12px">Príklad čítania: <em>Tím 1 prezentuje na cvičeniach 3 a 4; jeho oponentom je tím 10. Naopak tím 3 oponuje tímu 1.</em></p>
+    <p class="sub" style="margin-top:12px">Príklad čítania: <em>Tím 1 má témy z prednášok 2 a 3, prvú prezentuje na cvičení 3, druhú na cvičení 4; jeho oponentom je tím 10. Naopak tím 3 oponuje tímu 1.</em></p>
   </section>
 
   <!-- AKO PÍSAŤ ESEJE -->
