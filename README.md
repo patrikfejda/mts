@@ -8,7 +8,7 @@ Informačná stránka pre študentov predmetu **Manažment softvérových projek
 
 ## Obsah
 
-- Kľúčové termíny (zámery esejí: 20. 9. 2026, eseje: 12. 12. 2026)
+- Kľúčové termíny (zámery esejí: 22. 9. 2026, eseje: 12. 12. 2026)
 - Zoznam 12 prednášok s dátumami
 - Organizácia cvičení (tímy, priebeh, prezentácie)
 - Hodnotenie a podmienky absolvovania
